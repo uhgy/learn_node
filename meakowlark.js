@@ -1,4 +1,6 @@
 var express = require('express');
+var fortune = require('./lib/fortune.js');
+
 
 var app = express();
 
@@ -24,9 +26,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/about', function(req, res){
-	var randomFortune = 
-		fortuneCookies[Math.floor(Math.random() * fortuneCookies.length)];
-	res.render('about', { fortune: randomFortune });
+	res.render('about', { fortune: fortune.getFortune() });
 });
 
 //404
